@@ -1,18 +1,18 @@
 #include <unistd.h>
 
-int	main(int ac, char **av)
+int	main(int argc, char **argv)
 {
 	int		i;
 	char	c;
 	int		upper;
 
-	if (ac == 2)
+	if (argc == 2)
 	{
 		i = 0;
 		upper = 0;
-		while (av[1][i])
+		while (argv[1][i])
 		{
-			c = av[1][i];
+			c = argv[1][i];
 			if (c == '_') // si se encuentra '_' no la escribimos y la siguiente va en mayúscula. 
 				upper = 1;
 			else
