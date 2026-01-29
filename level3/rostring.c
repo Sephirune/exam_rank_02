@@ -5,16 +5,6 @@ void ft_putchar(char c)
     write(1, &c, 1);
 }
 
-void putstr(char *str)
-{
-    int i = 0;
-    while (str[i])
-    {
-        ft_putchar(str[i]);
-        i++;
-    }
-}
-
 int main(int argc, char **argv)
 {
     int i = 0;
