@@ -1,11 +1,21 @@
 #include <unistd.h>
 
-int	ft_inter(int max, char *str, char c)
+int	ft_seen_before(char *str, int pos, char c)
 {
-	int	i;
+	int	i = 0;
+	while (i < pos)
+	{
+		if (str[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
-	i = 0;
-	while (i < max)
+int	ft_in_str(char *str, char c)
+{
+	int	i = 0;
+	while (str[i])
 	{
 		if (str[i] == c)
 			return (1);
@@ -17,20 +27,18 @@ int	ft_inter(int max, char *str, char c)
 int	main(int argc, char **argv)
 {
 	int	i;
-	int	j;
 
 	if (argc == 3)
-	{	
+	{
 		i = 0;
-			j = 0;
-			while (argv[2][j] && argv[1][i] != argv[2][j])
-				j++;
-			while (argv[1][i] && !ft_inter(i, argv[2], argv[2][j]))
-			{
-					write (1, &argv[1][i], 1);
-					i++;
-			}
+		while (argv[1][i])
+		{
+			if (!ft_seen_before(argv[1], i, argv[1][i])
+				&& ft_in_str(argv[2], argv[1][i]))
+				write(1, &argv[1][i], 1);
+			i++;
+		}
 	}
-	write (1, "\n", 1);
+	write(1, "\n", 1);
 	return (0);
 }
